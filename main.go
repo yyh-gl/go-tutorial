@@ -13,7 +13,8 @@ func main() {
     const Host = "localhost:5000"
 
     router := mux.NewRouter()
-    router.HandleFunc("/users/{id:[0-9]+}", handler.UsersHandler).Methods("GET")
+    router.HandleFunc("/users/{id:[0-9]+}", handler.UsersShowHandler).Methods("GET")
+    router.HandleFunc("/users", handler.UsersCreateHandler).Methods("POST")
 
     fmt.Println("Server Start >> " + Host)
     log.Fatal(http.ListenAndServe(Host, router))
